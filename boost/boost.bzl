@@ -1,7 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-include_pattern = "boost/%s/"
-
 hdrs_patterns = [
     "boost/%s.h",
     "boost/%s_fwd.h",
@@ -36,9 +34,6 @@ def srcs_list(library_name, exclude):
         exclude = exclude,
     )
 
-def includes_list(library_name):
-    return [".", include_pattern % library_name]
-
 def hdr_list(library_name, exclude = []):
     return native.glob([p % (library_name,) for p in hdrs_patterns], exclude = exclude)
 
@@ -46,7 +41,6 @@ def boost_library(
         name,
         boost_name = None,
         defines = None,
-        includes = None,
         hdrs = None,
         srcs = None,
         deps = None,
@@ -61,9 +55,6 @@ def boost_library(
 
     if defines == None:
         defines = []
-
-    if includes == None:
-        includes = []
 
     if hdrs == None:
         hdrs = []
@@ -84,11 +75,11 @@ def boost_library(
         name = name,
         visibility = visibility,
         defines = default_defines + defines,
-        includes = includes_list(boost_name) + includes,
         hdrs = hdr_list(boost_name, exclude_hdr) + hdrs,
         srcs = srcs_list(boost_name, exclude_src) + srcs,
         deps = deps,
         copts = default_copts + copts,
+        includes = ["."],
         linkopts = linkopts,
         linkstatic = linkstatic,
         licenses = ["notice"],

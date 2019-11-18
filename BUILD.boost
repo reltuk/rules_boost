@@ -2053,7 +2053,6 @@ cc_library(
     hdrs = [],
     copts = ["-msse4.2"],
     defines = BOOST_LOG_DEFINES,
-    includes = [],
     licenses = ["notice"],
     linkopts = [],
     visibility = ["//visibility:public"],
