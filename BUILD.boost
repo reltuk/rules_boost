@@ -335,7 +335,7 @@ boost_library(
         ":static_assert",
         ":system",
         ":throw_exception",
-        ":tribool",
+        ":logic",
         ":utility",
     ],
 )
@@ -1694,11 +1694,7 @@ boost_library(
 )
 
 boost_library(
-    name = "tribool",
-    hdrs = [
-        "boost/logic/tribool.hpp",
-        "boost/logic/tribool_fwd.hpp",
-    ],
+    name = "logic",
     deps = [
         ":config",
         ":detail",

@@ -385,11 +385,11 @@ cc_test(
 )
 
 cc_test(
-    name = "tribool_test",
+    name = "logic_test",
     size = "small",
-    srcs = ["tribool_test.cc"],
+    srcs = ["logic_test.cc"],
     deps = [
-        "@boost//:tribool",
+        "@boost//:logic",
     ],
 )
 
